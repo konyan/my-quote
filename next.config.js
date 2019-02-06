@@ -1,2 +1,13 @@
 const withSass = require('@zeit/next-sass')
-module.exports = withSass()
+const debug = process.env.NODE_ENV !== 'production'
+
+module.exports = {
+   
+    exportPathMap: function () {
+        return {
+            '/': { page: '/' },
+        }
+    },
+    withSass,
+    assetPrefix: !debug ? '/Next-gh-page-example/' : ''
+}
